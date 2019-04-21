@@ -2,6 +2,7 @@ const customer = require('../models/customer');
 const request = require('request');
 const xml2js = require('xml2js');
 
+const _CUST_DET_HOST=process.env.CUST_DET_HOST | 'localhost'
 
 /**
  * Controller procedure for fetching 
@@ -9,7 +10,7 @@ const xml2js = require('xml2js');
  */
 exports.getCustomerByID = (req,res,next) => {
     // TODO! Fetch content from T24 webservices            
-    request.get('http://localhost:3001/t24/api/customer', 
+    request.get('http://'+ _CUST_DET_HOST +':3001/t24/api/customer', 
     (err, response, body) => {
         if(!err  && response.statusCode === 200){
             // Parse received XML response and 
