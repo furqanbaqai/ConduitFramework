@@ -1,6 +1,6 @@
 const app = require("./app");
 const http = require("http");
-
+const logger = require('./utils/logger');
 
 
 /*****************************
@@ -25,12 +25,12 @@ const normalizePort = val => {
     }
     const bind = typeof port === "string" ? "pipe " + port : "port " + port;
     switch (error.code) {
-      case "EACCES":
-        console.error(bind + " requires elevated privileges");
+      case "EACCES":        
+        logger.error(bind + " requires elevated privileges");
         process.exit(1);
         break;
-      case "EADDRINUSE":
-        console.error(bind + " is already in use");
+      case "EADDRINUSE":        
+        logger.error(bind + " is already in use");
         process.exit(1);
         break;
       default:
@@ -40,10 +40,11 @@ const normalizePort = val => {
 
 const onListening = () => {
     const addr = server.address();
-    const bind = typeof port === "string" ? "pipe " + port : "port " + port;
-    console.debug("Listening on: "+ bind);
+    const bind = typeof port === "string" ? "pipe " + port : "port " + port;    
+    logger.info("Listening on: "+ bind);
 };
   
+// TODO! Check if package.json have properties name and version
 const port = normalizePort(process.env.PORT || "3000");
 app.set("port", port);
 

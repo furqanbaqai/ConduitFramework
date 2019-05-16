@@ -1,6 +1,7 @@
 const customer = require('../models/customer');
 const request = require('request');
 const xml2js = require('xml2js');
+const logger = require('../utils/logger');
 
 const _CUST_DET_HOST=process.env.CUST_DET_HOST || 'localhost:3001'
 
@@ -10,6 +11,7 @@ const _CUST_DET_HOST=process.env.CUST_DET_HOST || 'localhost:3001'
  */
 exports.getCustomerByID = (req,res,next) => {
     // TODO! Fetch content from T24 webservices    
+    logger.debug(req.body); // TODO! We should dispatch it to the middleware
     request.get('http://'+ _CUST_DET_HOST +'/t24/api/customer', 
     (err, response, body) => {
         if(!err  && response.statusCode === 200){
