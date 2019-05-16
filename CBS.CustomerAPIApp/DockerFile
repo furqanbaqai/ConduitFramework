@@ -1,0 +1,8 @@
+FROM node:8.16.0-alpine
+
+LABEL maintainer="Muhammad Furqan Baqai (baqai.furqan@gmail.com)"
+LABEL version="0.0.1 (alpha)"
+LABEL description="Thie container encapstulate services related to customer and accounts"
+
+ENV PORT="3000" \
+    CUST_DET_HOST="192.168.65.128:3001" 

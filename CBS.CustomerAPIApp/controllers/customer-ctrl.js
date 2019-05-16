@@ -2,15 +2,15 @@ const customer = require('../models/customer');
 const request = require('request');
 const xml2js = require('xml2js');
 
-const _CUST_DET_HOST=process.env.CUST_DET_HOST | 'localhost'
+const _CUST_DET_HOST=process.env.CUST_DET_HOST || 'localhost:3001'
 
 /**
  * Controller procedure for fetching 
  * one customer from backend system
  */
 exports.getCustomerByID = (req,res,next) => {
-    // TODO! Fetch content from T24 webservices            
-    request.get('http://'+ _CUST_DET_HOST +':3001/t24/api/customer', 
+    // TODO! Fetch content from T24 webservices    
+    request.get('http://'+ _CUST_DET_HOST +'/t24/api/customer', 
     (err, response, body) => {
         if(!err  && response.statusCode === 200){
             // Parse received XML response and 
