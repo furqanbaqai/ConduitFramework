@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
-    "log4js": "^4.2.0"
+    "log4js": "^6.4.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"
